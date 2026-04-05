@@ -28,10 +28,30 @@ services:
       - "8081:8081"
     depends_on:
       - eureka-server
+      - postgres-db
     networks:
       - rednorte-network
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/listas_espera_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: listas_espera_db
+    networks:
+      - rednorte-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   # Módulos pendientes (Comentados temporalmente para evitar que fallen)
   # ms-reasignacion:
@@ -61,3 +81,6 @@ services:
 networks:
   rednorte-network:
     driver: bridge
+
+volumes:
+  postgres_data:
