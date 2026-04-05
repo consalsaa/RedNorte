@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface AtencionRepository extends JpaRepository<Atencion, Long> {
     List<Atencion> findByEstadoOrderByPrioridadAscFechaSolicitudAsc(EstadoAtencion estado);
+    List<Atencion> findByPacienteRut(String rut);
 }

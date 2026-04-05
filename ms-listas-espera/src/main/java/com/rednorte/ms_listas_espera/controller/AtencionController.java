@@ -39,4 +39,9 @@ public class AtencionController {
         Atencion atencionActualizada = atencionService.actualizarEstado(id, nuevoEstado);
         return ResponseEntity.ok(atencionActualizada);
     }
+
+    @GetMapping("/paciente/{rut}")
+    public ResponseEntity<List<Atencion>> obtenerPorRutPaciente(@PathVariable String rut) {
+        return ResponseEntity.ok(atencionService.obtenerPorRutPaciente(rut));
+    }
 }

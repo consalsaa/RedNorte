@@ -53,4 +53,9 @@ public class AtencionServiceImpl implements AtencionService {
             throw new RuntimeException("Estado inválido. Opciones válidas: EN_ESPERA, AGENDADO, ATENDIDO, CANCELADO");
         }
     }
+
+    @Override
+    public List<Atencion> obtenerPorRutPaciente(String rut) {
+        return atencionRepository.findByPacienteRut(rut);
+    }
 }
