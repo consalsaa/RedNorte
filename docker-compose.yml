@@ -66,17 +66,21 @@ services:
   #   environment:
   #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
 
-  # ms-portal-paciente:
-  #   build: ./ms-portal-paciente
-  #   container_name: ms-portal-paciente
-  #   ports:
-  #     - "8083:8083"
-  #   depends_on:
-  #     - eureka-server
-  #   networks:
-  #     - rednorte-network
-  #   environment:
-  #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+  ms-portal-paciente:
+    build: ./ms-portal-paciente
+    container_name: ms-portal-paciente
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+      - postgres-db
+    networks:
+      - rednorte-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/portal_paciente_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
 
 networks:
   rednorte-network:
