@@ -11,21 +11,8 @@
 	<groupId>com.rednorte</groupId>
 	<artifactId>ms-reasignacion</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<name>ms-reasignacion</name>
+	<description>Microservicio de Reasignación Automática - RedNorte</description>
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2025.1.1</spring-cloud.version>
@@ -42,6 +29,12 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- Circuit Breaker - Resilience4j -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 
 		<dependency>
