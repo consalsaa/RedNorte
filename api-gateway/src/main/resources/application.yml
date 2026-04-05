@@ -19,8 +19,24 @@ spring:
           uri: lb://MS-PORTAL-PACIENTE
           predicates:
             - Path=/api/portal-paciente/**
+        
+        - id: ms-reasignacion
+          uri: lb://MS-REASIGNACION
+          predicates:
+            - Path=/api/reasignacion/**
+
+        # Ruta pública para autenticación (no requiere JWT)
+        - id: auth-service
+          uri: lb://API-GATEWAY
+          predicates:
+            - Path=/auth/**
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://eureka-server:8761/eureka/}
+
+# Configuración JWT
+jwt:
+  secret: RedNorte2026SecretKeyForJwtTokenGenerationAndValidation!@#
+  expiration: 3600000
