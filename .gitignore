@@ -3,9 +3,6 @@
 **/target/
 !.mvn/wrapper/maven-wrapper.jar
 
-#vscode
-.vscode/
-
 # IDEA
 *.iml
 *.ipr

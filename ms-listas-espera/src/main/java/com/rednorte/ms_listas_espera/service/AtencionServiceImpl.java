@@ -36,6 +36,11 @@ public class AtencionServiceImpl implements AtencionService {
     }
 
     @Override
+    public List<Atencion> obtenerTodas() {
+        return atencionRepository.findAll();
+    }
+
+    @Override
     public Atencion actualizarEstado(Long id, String nuevoEstado) {
         Atencion atencion = atencionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Atención con ID " + id + " no encontrada"));

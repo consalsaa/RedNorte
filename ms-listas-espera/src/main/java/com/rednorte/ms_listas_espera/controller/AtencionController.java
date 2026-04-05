@@ -27,6 +27,11 @@ public class AtencionController {
         return ResponseEntity.ok(atencionService.obtenerListaEspera());
     }
 
+    @GetMapping
+    public ResponseEntity<List<Atencion>> listarTodas() {
+        return ResponseEntity.ok(atencionService.obtenerTodas());
+    }
+
     @PutMapping("/{id}/estado")
     public ResponseEntity<Atencion> actualizarEstado(
             @PathVariable Long id,
