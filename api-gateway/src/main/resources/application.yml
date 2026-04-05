@@ -14,6 +14,11 @@ spring:
           uri: lb://MS-LISTAS-ESPERA
           predicates:
             - Path=/api/listas-espera/**
+        
+        - id: ms-portal-paciente
+          uri: lb://MS-PORTAL-PACIENTE
+          predicates:
+            - Path=/api/portal-paciente/**
 
 eureka:
   client:
